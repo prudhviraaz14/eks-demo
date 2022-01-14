@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: development
+  namespace: kube-event
+spec:
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+        - name: nginx-deployment
+          image: prudhviraaz14/mywebapp:mywebapp
+          ports:
+            - containerPort: 80
